@@ -8,8 +8,10 @@
   margin-bottom: 12px;
   outline: 0;
   width: 100%;
+  font-size: large;
 }
 
 .SimpleInput::placeholder {
   color: #b4b4b4;
+  font-size: medium;
 }
