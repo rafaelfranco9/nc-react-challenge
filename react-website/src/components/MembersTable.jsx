@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { MembersContext } from "../contexts/MembersContext";
 import "../styles/MembersTable.css";
 
 const MembersTable = () => {
+  const { members, getAllMembersFromApi } = useContext(MembersContext);
+
+  useEffect(async () => {
+    try {
+      await getAllMembersFromApi();
+    } catch (err) {
+      console.log(err.message);
+    }
+  }, []);
+
   return (
     <div className="Table-container">
       <div className="Table-title">Members</div>
@@ -9,10 +20,14 @@ const MembersTable = () => {
       <span className="Table-header">Lastname</span>
       <span className="Table-header">Address</span>
       <span className="Table-header">SSN</span>
-      <span className="Table-item">Rafael</span>
-      <span className="Table-item">Franco</span>
-      <span className="Table-item">1440 brickell bay drive</span>
-      <span className="Table-item">12412413</span>
+      {members?.length &&
+        members.map((member, i) =>
+          Object.keys(member).map((key, i) => (
+            <span key={key + i} className="Table-item">
+              {member[key]}
+            </span>
+          ))
+        )}
     </div>
   );
 };

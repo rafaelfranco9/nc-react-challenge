@@ -1,18 +1,20 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import SimpleInput from "../components/shared/SimpleInput";
+import { MembersContext } from "../contexts/MembersContext";
 import "../styles/MembersForm.css";
 
 const ssnRegex = /^\d{3}-\d{2}-\d{4}$/;
 
 const MembersForm = () => {
+  const { saveNewMember } = useContext(MembersContext);
   const form = useRef(null);
   const error = useRef(null);
 
   const getFormData = () => {
     const formData = new FormData(form.current);
     const member = {
-      name: formData.get("name").trim(),
-      lastname: formData.get("lastname").trim(),
+      firstName: formData.get("firstname").trim(),
+      lastName: formData.get("lastname").trim(),
       address: formData.get("address").trim(),
       ssn: formData.get("ssn").trim(),
     };
@@ -27,12 +29,12 @@ const MembersForm = () => {
     }
   };
 
-  const validateFields = ({ name, lastname, address, ssn }) => {
-    if (!(name && lastname && address && ssn))
+  const validateFields = ({ firstName, lastName, address, ssn }) => {
+    if (!(firstName && lastName && address && ssn))
       throw new Error("All fields most be completed");
-    if (name.length <= 1)
-      throw new Error("Name should have more than one character");
-    if (lastname.length <= 1)
+    if (firstName.length <= 1)
+      throw new Error("Firstname should have more than one character");
+    if (lastName.length <= 1)
       throw new Error("Lastname should have more than one character");
     if (address.length <= 1)
       throw new Error("Address should have more than one character");
@@ -45,15 +47,22 @@ const MembersForm = () => {
     error.current.textContent = "";
   };
 
-  const handleOnSave = (event) => {
+  const handleOnSave = async (event) => {
     event.preventDefault();
-    console.log(getFormData());
+    const newMember = getFormData();
+    if (newMember) {
+      try {
+        await saveNewMember(newMember);
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
   };
 
   return (
     <form ref={form} className="Members-form">
       <div className="Form-inputs">
-        <SimpleInput placeholder={"First name"} name={"name"} />
+        <SimpleInput placeholder={"First name"} name={"firstname"} />
         <SimpleInput placeholder={"Last name"} name={"lastname"} />
         <SimpleInput placeholder={"Address"} name={"address"} />
         <SimpleInput placeholder={"SSN"} name={"ssn"} />
