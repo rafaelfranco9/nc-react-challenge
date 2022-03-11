@@ -12,8 +12,14 @@
   font-size: 30px;
   margin-right: 40px;
 }
+
 .Header-link {
   color: #707070;
   text-decoration: none;
   font-size: large;
+  margin-right: 20px;
+}
+
+.Header-link:last-child {
+  margin-right: 0;
 }

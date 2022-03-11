@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "../../styles/shared/Header.css";
 
 const Header = ({ title = "New Combin Website" }) => {
@@ -6,9 +8,14 @@ const Header = ({ title = "New Combin Website" }) => {
     <header className="Header">
       <div className="Header-content">
         <h1 className="Header-title">{title}</h1>
-        <a className="Header-link" href="#">
-          members
-        </a>
+        <div className="Header-links">
+          <Link to="/home" className="Header-link">
+            home
+          </Link>
+          <Link to="/members" className="Header-link">
+            members
+          </Link>
+        </div>
       </div>
     </header>
   );
