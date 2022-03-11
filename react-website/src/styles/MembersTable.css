@@ -1,0 +1,25 @@
+.Table-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 50px;
+  align-items: stretch;
+}
+
+.Table-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+.Table-header,
+.Table-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Table-header {
+  font-weight: 700;
+}
