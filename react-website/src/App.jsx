@@ -1,8 +1,11 @@
+import React from "react";
+import AppRouter from "./router/AppRouter";
+
 function App() {
   return (
-    <div>
-      <h1>New Combin App</h1>
-    </div>
+    <>
+      <AppRouter />
+    </>
   );
 }
 
