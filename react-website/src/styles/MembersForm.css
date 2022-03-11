@@ -1,0 +1,35 @@
+.Members-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+}
+
+.Form-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 25px;
+}
+
+.Form-inputs span {
+  font-size: 16px;
+  text-transform: lowercase;
+  color: #fb5454;
+}
+
+.Form-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Form-buttons button {
+  border: none;
+  min-height: 30px;
+  min-width: 80px;
+  padding: 8px;
+  background-color: grey;
+  color: white;
+  border-radius: 8px;
+}
