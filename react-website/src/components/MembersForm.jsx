@@ -6,7 +6,7 @@ import "../styles/MembersForm.css";
 const ssnRegex = /^\d{3}-\d{2}-\d{4}$/;
 
 const MembersForm = () => {
-  const { saveNewMember } = useContext(MembersContext);
+  const { saveNewMember, members } = useContext(MembersContext);
   const form = useRef(null);
   const error = useRef(null);
 
@@ -39,12 +39,17 @@ const MembersForm = () => {
     if (address.length <= 1)
       throw new Error("Address should have more than one character");
     if (!ssn.match(ssnRegex)) throw new Error("invalid ssn");
+    if (memberExists(ssn)) throw new Error("The SSN already exists");
   };
 
   const resetForm = (event) => {
     event.preventDefault();
     form.current.reset();
     error.current.textContent = "";
+  };
+
+  const memberExists = (ssn) => {
+    return members.some((member) => member.ssn === ssn);
   };
 
   const handleOnSave = async (event) => {
