@@ -71,7 +71,7 @@ npm run serve
 cd react-website
 npm run start
 ```
-**5.** Abrir navegador e ingresar a `http://localhost:8081/` 
+**5.** Abrir navegador e ingresar a `http://localhost:3000/` 
 
 **6.** Empieza a utilizar la app!
 #
