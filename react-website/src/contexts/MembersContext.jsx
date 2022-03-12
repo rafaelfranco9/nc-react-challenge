@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import useAuth from "../hooks/useAuthentication";
+import { HOST, ENDPOINTS } from "../api";
 
 export const MembersContext = React.createContext({});
 
@@ -13,7 +14,8 @@ export const MembersContextProvider = ({ children }) => {
     setLoading(true);
     try {
       const token = await getToken();
-      const response = await axios("http://localhost:8081/api/members", {
+      const API = HOST + ENDPOINTS.MEMBERS;
+      const response = await axios(API, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -33,7 +35,8 @@ export const MembersContextProvider = ({ children }) => {
     setLoading(true);
     try {
       const token = await getToken();
-      const response = await axios("http://localhost:8081/api/members", {
+      const API = HOST + ENDPOINTS.MEMBERS;
+      const response = await axios(API, {
         method: "POST",
         data: newMember,
         headers: {

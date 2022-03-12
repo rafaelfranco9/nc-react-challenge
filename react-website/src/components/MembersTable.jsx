@@ -5,12 +5,14 @@ import "../styles/MembersTable.css";
 const MembersTable = () => {
   const { members, getAllMembersFromApi } = useContext(MembersContext);
 
-  useEffect(async () => {
-    try {
-      await getAllMembersFromApi();
-    } catch (err) {
-      console.log(err.message);
-    }
+  useEffect(() => {
+    (async () => {
+      try {
+        await getAllMembersFromApi();
+      } catch (err) {
+        console.log(err.message);
+      }
+    })();
   }, []);
 
   return (

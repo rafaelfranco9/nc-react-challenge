@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useLocalStorage from "./useLocalStorage";
+import { HOST, ENDPOINTS } from "../api";
 
 const TOKEN_KEY = "BEARER_TOKEN";
 
@@ -9,7 +9,7 @@ const useAuth = (username, password) => {
 
   const getToken = async () => {
     if (
-      Object.keys(tokenData).length == 0 ||
+      Object.keys(tokenData).length === 0 ||
       tokenData?.exp < Date.now() / 1000
     ) {
       let apiTokenData = await signIn(username, password);
@@ -24,11 +24,12 @@ const useAuth = (username, password) => {
 
   const signIn = async (username, password) => {
     try {
-      const { status, data } = await axios("http://localhost:8081/auth", {
+      const API = HOST + ENDPOINTS.AUTH;
+      const { status, data } = await axios(API, {
         method: "POST",
         data: { username, password },
       });
-      if (status == 200) {
+      if (status === 200) {
         return data;
       }
     } catch (err) {

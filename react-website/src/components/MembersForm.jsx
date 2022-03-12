@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef } from "react";
 import SimpleInput from "../components/shared/SimpleInput";
 import { MembersContext } from "../contexts/MembersContext";
 import "../styles/MembersForm.css";

@@ -14,7 +14,7 @@ const Header = ({ title = "New Combin Challenge" }) => {
           <Link
             to="/home"
             className="Header-link"
-            style={pathname == "/home" ? { textDecoration: "underline" } : {}}
+            style={pathname === "/home" ? { textDecoration: "underline" } : {}}
           >
             home
           </Link>
@@ -22,7 +22,7 @@ const Header = ({ title = "New Combin Challenge" }) => {
             to="/members"
             className="Header-link"
             style={
-              pathname == "/members" ? { textDecoration: "underline" } : {}
+              pathname === "/members" ? { textDecoration: "underline" } : {}
             }
           >
             members
