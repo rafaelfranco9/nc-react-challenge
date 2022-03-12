@@ -5,16 +5,22 @@ import useLocalStorage from "./useLocalStorage";
 const TOKEN_KEY = "BEARER_TOKEN";
 
 const useAuth = (username, password) => {
-  const { item: token, saveNewItem } = useLocalStorage(TOKEN_KEY, {});
+  const { item: tokenData, saveNewItem } = useLocalStorage(TOKEN_KEY, {});
 
-  useEffect(async () => {
-    if (Object.keys(token).length == 0 || token?.exp < Date.now() / 1000) {
+  const getToken = async () => {
+    if (
+      Object.keys(tokenData).length == 0 ||
+      tokenData?.exp < Date.now() / 1000
+    ) {
       let apiTokenData = await signIn(username, password);
       if (apiTokenData) {
         saveNewItem(apiTokenData);
+        return apiTokenData.token;
       }
+    } else {
+      return tokenData.token;
     }
-  });
+  };
 
   const signIn = async (username, password) => {
     try {
@@ -32,7 +38,7 @@ const useAuth = (username, password) => {
   };
 
   return {
-    token,
+    getToken,
   };
 };
 

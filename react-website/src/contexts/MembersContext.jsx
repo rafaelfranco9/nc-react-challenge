@@ -5,15 +5,14 @@ import useAuth from "../hooks/useAuthentication";
 export const MembersContext = React.createContext({});
 
 export const MembersContextProvider = ({ children }) => {
-  const {
-    token: { token },
-  } = useAuth("sarah", "connor");
+  const { getToken } = useAuth("sarah", "connor");
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const getAllMembersFromApi = async () => {
     setLoading(true);
     try {
+      const token = await getToken();
       const response = await axios("http://localhost:8081/api/members", {
         method: "GET",
         headers: {
@@ -33,6 +32,7 @@ export const MembersContextProvider = ({ children }) => {
   const saveNewMember = async (newMember) => {
     setLoading(true);
     try {
+      const token = await getToken();
       const response = await axios("http://localhost:8081/api/members", {
         method: "POST",
         data: newMember,
