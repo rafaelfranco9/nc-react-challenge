@@ -77,7 +77,11 @@ const MembersForm = () => {
         <button type="button" onClick={resetForm}>
           Reset
         </button>
-        <button type="button" onClick={handleOnSave}>
+        <button
+          type="button"
+          onClick={handleOnSave}
+          style={{ backgroundColor: "#5480F7" }}
+        >
           Save
         </button>
       </div>

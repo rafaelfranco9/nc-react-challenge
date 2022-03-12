@@ -5,4 +5,5 @@
   min-width: 120px;
   min-height: 120px;
   display: flex;
+  max-width: 100%;
 }

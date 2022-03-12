@@ -12,6 +12,7 @@ const SimpleInput = ({ placeholder, name }) => {
       autoCorrect="false"
       autoCapitalize="true"
       autoComplete="false"
+      maxLength="80"
     />
   );
 };

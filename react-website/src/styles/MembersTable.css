@@ -1,9 +1,10 @@
 .Table-container {
   width: 100%;
+  max-width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
   grid-auto-rows: 50px;
-  align-items: stretch;
 }
 
 .Table-title {
@@ -19,6 +20,9 @@
   justify-content: center;
   align-items: center;
   text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .Table-header {
