@@ -116,7 +116,7 @@ cd react-website
 npm install
 npm run start
 ```
-**6.** Open the browser in  `http://localhost:8081/` 
+**6.** Open the browser in  `http://localhost:3000/` 
 
 **7.** Enjoy the app!
 #
