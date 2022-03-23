@@ -96,11 +96,11 @@ In this section, you will find a link to each of the items mentioned in the goal
 ## Instalation
 **1.** Clone repository
 ```sh
-https://github.com/rafaelfranco9/nc-react-challenge
+https://github.com/rafaelfranco9/react-hooks-project.git
 ```
 **2.** Change working directory 
 ```sh
-cd nc-react-challenge
+cd react-hooks-project
 ```
 **3.** Install dependencies and start the server
 ```sh
