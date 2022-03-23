@@ -1,7 +1,7 @@
 {
   "name": "fast-api-jr",
   "version": "1.0.0",
-  "description": "Fast API CodeChallenge for juniors",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "serve": "nodemon index.js",

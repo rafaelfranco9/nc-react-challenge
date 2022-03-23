@@ -1,32 +1,45 @@
-# New Combin React Challenge
+# React Hooks Project 
 
-## Descripcion general
-Se pide crear un sitio web utilizando React que tenga la siguiente estructura
-![alt text](https://github.com/newcombin/devskills/blob/main/design.png "Diseño web")
+## Description
+This React application allows the user to save new **members** `(firstName, lastName, address, ssn)` on the server using a form and then see them added in the table next to it.
+This application was created to put the most important concepts and best practices into action in a simple project.
 
-**La app debe poder mostrar y guardar nuevos miembros**
-## Requisitos
-* Los datos del formulario deben ser enviados a la API, la tabla de la derecha debe recibir los datos de la misma al cargarse el sitio
-* Luego de cada insercion exitosa, se debe ingresar los datos a la tabla, sin necesidad de utilizar el endpoint GET
-* El boton reset debe limpiar los campos del formulario
-* El boton save debe enviar los datos a la API
-* El número de seguro social (ssn), es único, y no puede repetirse en la lista.
-* En caso de un intento de inserción erroneo, se debe informar dicho error
-* Al pasar 2 minutos de inactividad, se debe refrescar la tabla automáticamente
-* Hacer uso correcto de las apis disponibles y no hacer llamados innecesarios
 
-### Otras Consideraciones
-* **firstName, lastName y address:** Mas de 1 caracter, sin espacios a los costados (trim)
-* **ssn:** Tener el formato ###-##-#### (cada # es un numero, los guiones son obligatorios)
-* Si el front no cumple las validaciones debe deshabilitar el boton de enviar
-## APIs disponibles
-| Método | Endpoint | Descripción
+## Goal
+The main goal of this project is to put in practice the following items:
+- React Hooks (useState, useEffect, useRef, useContext)
+- Custom Hooks (logic reusability)
+- Correct state management
+- Clean folder structure 
+- Local Storage
+- API requests (using axios)
+- Routes 
+- Component composition (children property)
+- Form validations
+- Inactivity refresh
+
+
+## Requirements
+* The form data must be sent to the API and the table on the right must receive the data from it when the site is loaded
+* After each successful insert, the data must be entered into the table, without the need to use the GET endpoint 
+* The reset button should clear the form fields
+* The save button should send the data to the API
+* The social security number (SSN) is unique and cannot be repeated in the list.
+* In case of an erroneous insertion attempt, the error must be reported
+* In order to use the member's endpoints the user first will need to get a token (use the following user "username": "sarah" "password": "connor"). The token expires every 15 minutes.
+* After 2 minutes of inactivity, the table should be refreshed automatically
+* SSN field must have the format ###-##-####
+* firstName, lastName and Address should have more than one character
+
+
+## Available APIs 
+| Method | Endpoint | Description
 |--|--|--|
-|GET|/api/members| Optener todos los miembros
-|POST|/api/members| Guardar nuevo miembro
-|POST|/auth| Optener token de usuario
+|GET|/api/members| find all members
+|POST|/api/members| create new member
+|POST|/auth| get user token
 
-### Esquemas 
+### APIs schemas 
 `POST -> /api/members` 
 ```sh
 //body and response
@@ -53,29 +66,61 @@ Se pide crear un sitio web utilizando React que tenga la siguiente estructura
 }
 ```
 
-## Instalación
-**1.** Clonar repositorio del proyecto
+## Items in practice
+In this section, you will find a link to each of the items mentioned in the goal section to see examples.
+* React Hooks
+  - [useState](react-website/src/contexts/MembersContext.jsx)  
+  - [useEffect](react-website/src/containers/Members.jsx)  
+  - [useRef](react-website/src/components/MembersForm.jsx)  
+  - [useContext](react-website/src/components/MembersTable.jsx)  
+* Custom Hooks
+  - [Hook definition](react-website/src/hooks/useAuthentication.js)
+  - [Hook implementation](react-website/src/contexts/MembersContext.jsx) 
+* Correct state management
+  - [members Context Provider wrapping just what is necessary](react-website/src/containers/Members.jsx) 
+* Local Storage
+  - [custom hook to manage local storage](react-website/src/hooks/useLocalStorage.js) 
+* API request using axios
+  - [GET & POST requests](react-website/src/contexts/MembersContext.jsx)  
+* Routes
+  - [App router](react-website/src/router/AppRouter.jsx)
+* Component composition
+  - [using composition](react-website/src/components/MembersPanel.jsx)   
+* Form validations
+  - [validations & useRef](react-website/src/components/MembersForm.jsx) 
+* Inactivity refresh
+  - [document events and recursion](react-website/src/containers/Members.jsx)
+
+---
+
+## Instalation
+**1.** Clone repository
 ```sh
 https://github.com/rafaelfranco9/nc-react-challenge
 ```
-**2.** Posicionarse en la carpeta del proyecto
+**2.** Change working directory 
 ```sh
 cd nc-react-challenge
 ```
-**3.** Iniciar el servidor
+**3.** Install dependencies and start the server
 ```sh
+npm install
 npm run serve
 ```
-**4.** Iniciar la aplicacion de React
+**4.** Change working directory
 ```sh
 cd react-website
+```
+**5.** Install dependencies and start the React application
+```sh
+npm install
 npm run start
 ```
-**5.** Abrir navegador e ingresar a `http://localhost:8081/` 
+**6.** Open the browser in  `http://localhost:8081/` 
 
-**6.** Empieza a utilizar la app!
+**7.** Enjoy the app!
 #
 
 
-## Contacto
-Para cualquier consulta respecto a este proyecto comunicarse al siguiente correo: francosprivato@gmail.com
+## Contact
+If you have any questions about the project feel free to contact me at francosprivato@gmail.com
